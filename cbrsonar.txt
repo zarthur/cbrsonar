@@ -1,0 +1,49 @@
+cbrsonar()
+Prgm
+Local  ang,dir,t,d,n,i,x,y,xb,yb
+setMode("Graph","POLAR")
+setGraph("Coordinates","Polar")
+ClrGraph
+ClrDraw
+
+Dialog
+    Title  "CBR Sonar"
+    Request  "Angle",ang
+    DropDown  "Direction:",{"Left","Right"},dir
+EndDlog
+
+max(l2)→xmax
+max(l2)→ymax
+­max(l2)→xmin
+­max(l2)→ymin
+max(l2)/5→xscl
+max(l2)/5→yscl
+expr(ang)→ang
+max(l1)→t
+ang/t→d
+dim(l1)→n
+
+For  i,1,n
+    If dir=2 Then
+        cos(l1[i]*d)*l2[i]→x
+        sin(l1[i]*d)*l2[i]→y
+        
+        If idim(l1) Then
+            cos(l1[i+1]*d)*l2[i+1]→xb
+            sin(l1[i+1]*d)*l2[i+1]→yb
+        EndIf
+    EndIf
+
+    If dir=1 Then
+        cos(­l1[i]*d)*l2[i]→x
+        sin(­l1[i]*d)*l2[i]→y
+        
+        If idim(l1) Then
+            cos(­l1[i+1]*d)*l2[i+1]→xb
+            sin(­l1[i+1]*d)*l2[i+1]→yb
+        EndIf
+    EndIf
+
+    Line  x,y,xb,yb
+EndFor
+EndPrgm

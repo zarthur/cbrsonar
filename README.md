@@ -9,6 +9,9 @@ point.
 Required data are L1 and L2 (both from the CBR), angle covered during scan (in
 radians), and the direction of scan (either left or right).
 
+**Note:** *cbrsonar.89p* is the program file that is executable on a TI-89 and
+*cbrsonar.txt* is the plain text version of the code.
+
 ![start](cbr1.gif)
 
 ![scan](cbr2.gif)
